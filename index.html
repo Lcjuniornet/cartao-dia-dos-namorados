@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia dos Namorados</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <img class="fade" src="imagens/imagem1.jpg" alt="Imagem 1">
+        <img class="fade" src="imagens/imagem2.jpg" alt="Imagem 2">
+        <img class="fade" src="imagens/imagem3.jpg" alt="Imagem 3">
+    </div>
+
+    
+
+    <div class="text" id="typewriter"></div>
+
+    <script>
+        let images = document.querySelectorAll(".fade");
+        let index = 0;
+
+        function changeImage() {
+            images.forEach(img => img.style.opacity = 0);
+            images[index].style.opacity = 1;
+            index = (index + 1) % images.length;
+        }
+
+        setInterval(changeImage, 4000);
+
+        let text = "💌 Feliz Dia dos Namorados 💌\n\nHoje, meu coração transborda gratidão por ter você ao meu lado. Cada momento contigo é um presente que a vida me deu. \nSeu sorriso ilumina meus dias, e seu amor dá sentido à minha existência. \nCom você, aprendi o verdadeiro significado do amor: parceria, respeito e carinho mútuo.\n Que possamos celebrar não apenas hoje, mas todos os dias, o privilégio de amar e ser amado por alguém tão especial. Te amo! ❤️";
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
+        }
+        typeWriter();
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 1000);
+    </script>
+
+</body>
+</html>
